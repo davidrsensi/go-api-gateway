@@ -24,6 +24,5 @@ curl -i -H "Content-Type: application/json" -X POST \
 
 Test GET:
 ```
-aws apigateway test-invoke-method --rest-api-id <rest API id> --resource-id <resource id> \
-    --http-method "GET" --path-with-query-string "/messages?ksuid=<KSUID>"
+curl https://<rest API id>.execute-api.<region>.amazonaws.com/<stage>/messages\?ksuid\=<KSUID>
 ```
