@@ -121,13 +121,13 @@ aws apigateway create-deployment --rest-api-id $rest_api_id --stage-name $stage 
 ###################################
 echo "API Gateway invoke url: https://$rest_api_id.execute-api.$region.amazonaws.com/$stage/messages"
 echo "Test POST:"
-echo "curl -i -H \"Content-Type: application/json\" -X POST \
-	-d '{\"User\":\"TestUser\", \"Message\": \"Test Message\"}' \
-	https://$rest_api_id.execute-api.$region.amazonaws.com/$stage/messages  | grep Ksuid | cut -d "=" -f2"
+echo -e "curl -i -H \"Content-Type: application/json\" -X POST \ 
+	-d '{\"User\":\"TestUser\", \"Message\": \"Test Message\"}' \ 
+	https://$rest_api_id.execute-api.$region.amazonaws.com/$stage/messages  | grep Ksuid | cut -d \"=\" -f2"
 
 echo -e "\nTest GET:"
-echo "aws apigateway test-invoke-method --rest-api-id <Rest API id> \
-	--resource-id <Resource id> --http-method \"GET\" \
+echo -e "aws apigateway test-invoke-method --rest-api-id <Rest API id> \ 
+	--resource-id <Resource id> --http-method \"GET\" \ 
 	--path-with-query-string \"/messages?ksuid=<KSUID>\""
 
 }

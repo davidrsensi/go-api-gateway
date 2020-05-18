@@ -11,6 +11,7 @@ This project is a simple Golang API that utilizes AWS Lambda, API Gateway, and D
 cd $GOPATH/src
 git clone git@github.com:davidrsensi/go-api-gateway.git
 cd go-api-gateway
+chmod +x deploy_api.sh
 ./deploy_api.sh
 ```
 ### Test the API:
