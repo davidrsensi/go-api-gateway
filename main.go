@@ -17,7 +17,7 @@ import (
 var ksuidRegexp = regexp.MustCompile(`\w{27}$`)
 var errorLogger = log.New(os.Stderr, "ERROR ", log.Llongfile)
 
-type message struct {
+type Message struct {
     Ksuid   string `json:"ksuid"`
     User  	string `json:"user"`
 	Message string `json:"message"`
@@ -86,7 +86,7 @@ func create(req events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, 
         return clientError(http.StatusBadRequest)
     }
 
-    msg := new(message)
+    msg := new(Message)
 
     msg.Ksuid = ksuid.New().String()
     msg.Date = time.Now().Format("20060102150405")

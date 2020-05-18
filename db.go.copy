@@ -11,7 +11,7 @@ import (
 // Declare a new DynamoDB instance. 
 var db = dynamodb.New(session.New(), aws.NewConfig().WithRegion("replace"))
 
-func getItem(Ksuid string) (*message, error) {
+func getItem(Ksuid string) (*Message, error) {
     // Prepare the input for the query.
     input := &dynamodb.GetItemInput{
         TableName: aws.String("replace"), // Replace table name
@@ -31,7 +31,7 @@ func getItem(Ksuid string) (*message, error) {
         return nil, nil
     }
 
-	msg := new(message)
+	msg := new(Message)
 
 
     err = dynamodbattribute.UnmarshalMap(result.Item, msg)
@@ -43,7 +43,7 @@ func getItem(Ksuid string) (*message, error) {
 }
 
 // Add a message record to DynamoDB.
-func putItem(msg *message) error {
+func putItem(msg *Message) error {
 
     input := &dynamodb.PutItemInput{
         TableName: aws.String("replace"),
